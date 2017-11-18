@@ -1,0 +1,16 @@
+{
+  "name": "shop_api",
+  "version": "1.0.0",
+  "description": "Shop tracking ArcoMaior API",
+  "author": "Antonio Estevao <abeestevao@gmail.com>",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1",
+    "bluebird": "^3.4.6",
+    "pg-promise": "^5.3.5",
+    "nodemon": "^1.12.1"
+  }
+}
