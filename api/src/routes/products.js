@@ -1,7 +1,7 @@
 var router = require('express').Router();
 var model = require('../models/Product');
 
-router.get('/products',  function(req, res, next){
+router.get('/',  function(req, res, next){
   model.getAll()
     .then(function (data) {
       res.status(200)

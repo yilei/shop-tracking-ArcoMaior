@@ -5,7 +5,7 @@
   "author": "Antonio Estevao <abeestevao@gmail.com>",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon src/app.js"
   },
   "dependencies": {
     "express": "^4.16.1",
