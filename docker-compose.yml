@@ -7,7 +7,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./api:/usr/src/app/api
+      - ./api/src:/usr/src/app/src
     environment:
       TZ: "Europe/London"
     networks:
@@ -38,7 +38,7 @@ services:
       POSTGRES_PASSWORD: app123.
       TZ: "Europe/London"
     volumes:
-      - ./postgresql/:/var/lib/postgresql/data
+      - ./postgres/data/:/var/lib/postgresql/data
     networks:
       - back
 
