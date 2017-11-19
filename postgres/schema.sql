@@ -18,6 +18,7 @@ CREATE TABLE meals (
     price_per_person NUMERIC(2),
     created_at TIMESTAMP NOT NULL DEFAULT now()
 );
+INSERT into meals values(1,'a','a','a',1,'1998-09-21',1.00);
 
 CREATE TABLE shops (
     id INTEGER PRIMARY KEY,
