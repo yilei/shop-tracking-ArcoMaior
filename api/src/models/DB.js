@@ -7,6 +7,6 @@ var options = {
 
 var pgp = require('pg-promise')(options);
 var connectionString = 'postgres://app:app123.@postgres';
-var db = pgp(connectionString);
+var conn = pgp(connectionString);
 
-module.exports = db;
+module.exports = conn;
