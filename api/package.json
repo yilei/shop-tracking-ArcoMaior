@@ -11,6 +11,7 @@
     "express": "^4.16.1",
     "bluebird": "^3.4.6",
     "pg-promise": "^5.3.5",
-    "nodemon": "^1.12.1"
+    "nodemon": "^1.12.1",
+    "body-parser": "^1.18.2"
   }
 }
