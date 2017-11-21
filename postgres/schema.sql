@@ -1,7 +1,7 @@
 -- Comment
 
 CREATE TABLE products (
-    id INTEGER PRIMARY KEY,
+    id SERIAL PRIMARY KEY ,
     name TEXT NOT NULL,
     description TEXT NOT NULL DEFAULT '',
     created_at TIMESTAMP NOT NULL DEFAULT now()
@@ -9,7 +9,7 @@ CREATE TABLE products (
 
 
 CREATE TABLE meals (
-    id INTEGER PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     description TEXT NOT NULL DEFAULT '',
     type TEXT NOT NULL,
@@ -18,10 +18,10 @@ CREATE TABLE meals (
     price_per_person NUMERIC(2),
     created_at TIMESTAMP NOT NULL DEFAULT now()
 );
-INSERT into meals values(1,'a','a','a',1,'1998-09-21',1.00);
+INSERT into meals values('a','a','a',1,'1998-09-21',1.00);
 
 CREATE TABLE shops (
-    id INTEGER PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     description TEXT NOT NULL DEFAULT '',
     day DATE NOT NULL ,
@@ -29,7 +29,7 @@ CREATE TABLE shops (
 );
 
 CREATE TABLE stocks (
-    id INTEGER PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     product_id INTEGER REFERENCES products (id) ,
     amount INTEGER ,
     price NUMERIC(2),
