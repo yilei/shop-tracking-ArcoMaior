@@ -1,7 +1,23 @@
 var db = require("./DB")
-
+var dal = require("./DAL")
 
 // add query functions
-function getAll(req, res, next) {
-  return db.any('select * from stocks')
+exports.getAll = function(req, res, next) {
+   return dal.getAll(req, res, next,"stocks")
+}
+
+exports.getSingle = function(req, res, next) {
+   return dal.getSingle(req, res, next,"stocks")
+}
+
+exports.create = function(req, res, next) {
+   return dal.create(req, res, next,"stocks")
+}
+
+exports.update = function(req, res, next) {
+   return dal.update(req, res, next,"stocks")
+}
+
+exports.delete = function(req, res, next) {
+   return dal.deletes(req, res, next,"stocks")
 }
