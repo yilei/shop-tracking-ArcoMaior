@@ -8,7 +8,11 @@ var app = express()
 
 var routes = require('./routes/routes')
 var bodyParser = require('body-parser')
+var cors = require('cors')
 
+
+// Cross-origin resource sharing
+app.use(cors())
 app.use(bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
