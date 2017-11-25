@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Arco Maior gestão de stocks</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1000, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Oxygen:400,700">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script charset="utf-8" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script charset="utf-8" src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
+    <script charset="utf-8" src="//cdn.jsdelivr.net/jquery.validation/1.13.1/jquery.validate.min.js"></script>
+    <script charset="utf-8" src="js/webapp.js"></script>
+  </head>
+  <body>
+
+    <div id="page_container">
+
+      <h1>Lista de refeições</h1>
+
+      <table class="datatable" id="table_meals">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Tipo</th>
+            <th>Numero de pessoas</th>
+            <th>Dia</th>
+            <th>Preço da refeição</th>
+            <th>Criada em</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+
+    </div>
+
+    <div class="lightbox_container">
+
+        <h2>Adicionar refeição</h2>
+        <form class="form add" id="form_meal" data-id="" novalidate>
+
+          <div class="input_container">
+            <label for="name">Nome: <span class="required">*</span></label>
+            <div class="field_container">
+              <input type="text" step="1" min="0" class="text" name="name" id="name" value="" required>
+            </div>
+          </div>
+          <div class="input_container">
+            <label for="description">Descrição: <span class="required">*</span></label>
+            <div class="field_container">
+              <input type="text" class="text" name="description" id="description" value="" required>
+            </div>
+          </div>
+          <div class="input_container">
+            <label for="type">Tipo: <span class="required">*</span></label>
+            <div class="field_container">
+              <input type="text" class="text" name="type" id="type" value="" required>
+            </div>
+          </div>
+          <div class="input_container">
+            <label for="people">Numero de pessoas: <span class="required">*</span></label>
+            <div class="field_container">
+              <input type="number" step="1" min="0" class="text" name="people" id="people" value="" required>
+            </div>
+          </div>
+          <div class="input_container">
+            <label for="day">Dia: <span class="required">*</span></label>
+            <div class="field_container">
+              <input type="date" min="0" class="text" name="day" id="day" value="" required>
+            </div>
+          </div>
+          <div class="input_container">
+            <label for="price_per_person">Preço por pessoa: <span class="required">*</span></label>
+            <div class="field_container">
+              <input type="number" min="0" class="text" name="price_per_person" id="price_per_person" value="" required>
+            </div>
+          </div>
+          <div class="input_container">
+            <label for="meal_products">Produtos: <span class="required">*</span></label>
+            <div class="field_container">
+              <input type="number" step="1" min="0" class="text" name="meal_products" id="meal_products" value="" required>
+            </div>
+          </div>
+          <div class="button_container">
+            <button type="submit">Add company</button>
+          </div>
+        </form>
+
+    </div>
+
+  </body>
+</html>
