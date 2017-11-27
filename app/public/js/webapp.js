@@ -15,6 +15,7 @@ $(document).ready(function(){
       { "data": "people"},
       { "data": "day" },
       { "data": "price_per_person"},
+      { "data": "products"},
       { "data": "created_at"}
     ],
     language: {

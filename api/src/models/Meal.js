@@ -1,9 +1,10 @@
 var db = require("./DB")
 var dal = require("./DAL")
+var products = require("./Product")
 
 // add query functions
 exports.getAll = function(req, res, next) {
-   return dal.getAll(req, res, next,"meals")
+   return dal.getAllMeals(req, res, next,"meals")
 }
 
 exports.getSingle = function(req, res, next) {

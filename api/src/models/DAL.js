@@ -32,10 +32,19 @@ function deletes(req, res, next , type) {
   return db.result('delete from $1:name where id = $2',[type, id])
 }
 
+function getAllMeals(req, res, next, type) {
+    var query_sting = "SELECT meals.*, string_agg(products.name, ', ') as products \
+                       FROM meals , meal_products, products \
+                       WHERE meals.id=meal_products.meal_id \
+                             AND products.id=meal_products.product_id \
+                      GROUP BY meals.id;"
+    return db.query(query_sting)
+}
 module.exports = {
   getAll: getAll,
   getSingle: getSingle,
   create: create,
   update: update,
-  deletes: deletes
+  deletes: deletes,
+  getAllMeals: getAllMeals
 };
