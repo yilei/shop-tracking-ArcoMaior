@@ -12,6 +12,7 @@ exports.getSingle = function(req, res, next) {
 }
 
 exports.create = function(req, res, next) {
+   delete req.body["meal_products"]
    return dal.create(req, res, next,"meals")
 }
 

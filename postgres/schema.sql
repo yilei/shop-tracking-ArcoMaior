@@ -46,8 +46,8 @@ CREATE TABLE stocks (
 );
 
 CREATE TABLE meal_products (
-  meal_id INTEGER REFERENCES meals (id),
-  product_id INTEGER REFERENCES products (id),
+  meal_id INTEGER REFERENCES meals (id) on delete cascade,
+  product_id INTEGER REFERENCES products (id) on delete cascade,
   amount  NUMERIC(2),
   price  NUMERIC(2)
 );
@@ -61,8 +61,8 @@ INSERT into meal_products values(3,3,10,7);
 
 
 CREATE TABLE shop_products (
-  sale_id INTEGER REFERENCES shops (id),
-    product_id INTEGER REFERENCES products (id),
+  sale_id INTEGER REFERENCES shops (id) on delete cascade,
+    product_id INTEGER REFERENCES products (id) on delete cascade,
     amount  NUMERIC(2),
     price  NUMERIC(2)
 );

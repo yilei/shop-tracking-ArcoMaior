@@ -13,7 +13,7 @@ function getSingle(req, res, next , type) {
 
 function create(req, res, next , type) {
   //console.log(req.query)
-  var query_string = db.$config.pgp.helpers.insert(req.body, null, type);
+  var query_string = db.$config.pgp.helpers.insert(req.body, null, type)+"RETURNING id";
   console.log(query_string);
   return db.query(query_string)
 }
@@ -29,15 +29,16 @@ function update(req, res, next , type) {
 function deletes(req, res, next , type) {
   //console.log(req.query)
   var id = parseInt(req.params.id)
-  return db.result('delete from $1:name where id = $2',[type, id])
+  return db.result('delete  from $1:name where id = $2',[type, id])
 }
 
 function getAllMeals(req, res, next, type) {
+  // Get all meals with their products name, having or not products
     var query_sting = "SELECT meals.*, string_agg(products.name, ', ') as products \
-                       FROM meals , meal_products, products \
-                       WHERE meals.id=meal_products.meal_id \
-                             AND products.id=meal_products.product_id \
-                      GROUP BY meals.id;"
+                          FROM meals \
+                          LEFT OUTER JOIN meal_products ON meals.id=meal_products.meal_id \
+                          LEFT OUTER JOIN products ON products.id=meal_products.product_id \
+                          GROUP BY meals.id;"
     return db.query(query_sting)
 }
 module.exports = {

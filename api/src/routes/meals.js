@@ -39,6 +39,7 @@ router.post('/',  function(req, res, next){
       res.status(200)
         .json({
           status: 'success',
+          data: data,
           message: 'Inserted one meal'
         });
     }).catch(function (err) {

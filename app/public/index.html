@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=1000, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Oxygen:400,700">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!--link rel="stylesheet" href="css/layout.css"-->
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" >
     <script charset="utf-8" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script charset="utf-8" src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
     <script charset="utf-8" src="//cdn.jsdelivr.net/jquery.validation/1.13.1/jquery.validate.min.js"></script>
@@ -30,7 +30,7 @@
             <th>Dia</th>
             <th>Preço da refeição</th>
             <th>Produtos</th>
-            <th>Criada em</th>
+            <th>Opções</th>
           </tr>
         </thead>
         <tbody>
@@ -75,19 +75,13 @@
             </div>
           </div>
           <div class="input_container">
-            <label for="price_per_person">Preço por pessoa: <span class="required">*</span></label>
-            <div class="field_container">
-              <input type="number" min="0" class="text" name="price_per_person" id="price_per_person" value="" required>
-            </div>
-          </div>
-          <div class="input_container">
             <label for="meal_products">Produtos: <span class="required">*</span></label>
             <div class="field_container">
               <input type="number" step="1" min="0" class="text" name="meal_products" id="meal_products" value="" required>
             </div>
           </div>
           <div class="button_container">
-            <button type="submit">Add company</button>
+            <button type="submit">Adicionar refeição</button>
           </div>
         </form>
 
