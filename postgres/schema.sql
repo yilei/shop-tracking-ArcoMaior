@@ -36,6 +36,9 @@ CREATE TABLE shops (
     day DATE NOT NULL ,
     created_at TIMESTAMP NOT NULL DEFAULT now()
 );
+INSERT into shops values(DEFAULT,'Compras pingo doce','Maria foi as compras','2017-09-22');
+INSERT into shops values(DEFAULT,'Compras pingo doce','Ines foi as compras','2017-09-21');
+INSERT into shops values(DEFAULT,'Compras mercearia','Pedro foi as compras','2017-09-23');
 
 CREATE TABLE stocks (
     id SERIAL PRIMARY KEY,
@@ -44,6 +47,13 @@ CREATE TABLE stocks (
     price NUMERIC(2),
     created_at TIMESTAMP NOT NULL DEFAULT now()
 );
+INSERT into stocks values(DEFAULT,1,1,5);
+INSERT into stocks values(DEFAULT,2,10,5);
+INSERT into stocks values(DEFAULT,3,2,5);
+INSERT into stocks values(DEFAULT,4,0,9);
+INSERT into stocks values(DEFAULT,5,7,5);
+INSERT into stocks values(DEFAULT,6,0,7);
+
 
 CREATE TABLE meal_products (
   meal_id INTEGER REFERENCES meals (id) on delete cascade,
@@ -58,11 +68,15 @@ INSERT into meal_products values(2,6,10,9);
 INSERT into meal_products values(3,1,7,5);
 INSERT into meal_products values(3,3,10,7);
 
-
-
 CREATE TABLE shop_products (
-  sale_id INTEGER REFERENCES shops (id) on delete cascade,
+    sale_id INTEGER REFERENCES shops (id) on delete cascade,
     product_id INTEGER REFERENCES products (id) on delete cascade,
     amount  NUMERIC(2),
     price  NUMERIC(2)
 );
+INSERT into shop_products values(1,1,1,5);
+INSERT into shop_products values(1,5,10,5);
+INSERT into shop_products values(2,7,2,5);
+INSERT into shop_products values(2,6,10,9);
+INSERT into shop_products values(3,1,7,5);
+INSERT into shop_products values(3,3,10,7);
