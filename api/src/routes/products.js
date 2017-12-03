@@ -15,4 +15,17 @@ router.get('/',  function(req, res, next){
     });
 });
 
+router.get('/inStock',  function(req, res, next){
+  model.getAllInStock()
+    .then(function (data) {
+      res.status(200)
+        .json({
+          status: 'success',
+          data: data,
+          message: 'Retrieved ALL products'
+        });
+    }).catch(function (err) {
+      return next(err);
+    });
+});
 module.exports = router;

@@ -5,13 +5,17 @@ const PORT = 3000;
 
 var express = require('express')
 var app = express()
-
 var routes = require('./routes/routes')
+// Json parser
 var bodyParser = require('body-parser')
+//logging
+var morgan = require('morgan')
+//Same host site request
 var cors = require('cors')
 
 
 // Cross-origin resource sharing
+app.use(morgan('tiny'))
 app.use(cors())
 app.use(bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies

@@ -4,7 +4,7 @@ var products = require("./Product")
 
 // add query functions
 exports.getAll = function(req, res, next) {
-   return dal.getAllMeals(req, res, next,"meals")
+   return dal.getAllMeals(req, res, next)
 }
 
 exports.getSingle = function(req, res, next) {
@@ -12,8 +12,13 @@ exports.getSingle = function(req, res, next) {
 }
 
 exports.create = function(req, res, next) {
-   delete req.body["meal_products"]
-   return dal.create(req, res, next,"meals")
+   var product_list = req.body["products"]
+   delete req.body["products"]
+   return dal.create(req, res, next,"meals").then(
+     function(data){
+       products.addMealProducts(req, res, next, data[0].id, product_list);
+     }
+   )
 }
 
 exports.update = function(req, res, next) {

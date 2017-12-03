@@ -10,6 +10,10 @@ exports.getSingle = function(req, res, next) {
    return dal.getSingle(req, res, next,"products")
 }
 
+exports.getAllInStock = function(req, res, next) {
+   return dal.getAllProductsInStock(req, res, next)
+}
+
 exports.create = function(req, res, next) {
    return dal.create(req, res, next,"products")
 }
@@ -20,4 +24,8 @@ exports.update = function(req, res, next) {
 
 exports.delete = function(req, res, next) {
    return dal.deletes(req, res, next,"products")
+}
+
+exports.addMealProducts = function(req, res, next, id ,products){
+    return dal.batchInsertMealProducts(req, res, next, id ,products);
 }

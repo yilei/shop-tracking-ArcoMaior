@@ -2,6 +2,7 @@ var promise = require('bluebird');
 
 var options = {
   // Initialization Options
+  capSQL: true,
   promiseLib: promise
 };
 

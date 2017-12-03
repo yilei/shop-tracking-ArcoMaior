@@ -5,20 +5,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=1000, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Oxygen:400,700">
-    <!--link rel="stylesheet" href="css/layout.css"-->
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" >
-    <script charset="utf-8" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script charset="utf-8" src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
+    <script charset="utf-8" src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script charset="utf-8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
     <script charset="utf-8" src="//cdn.jsdelivr.net/jquery.validation/1.13.1/jquery.validate.min.js"></script>
     <script charset="utf-8" src="js/webapp.js"></script>
+    <script charset="utf-8" src="js/jquery.multi-select.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/multi-select.css" type="text/css"></script>
+
   </head>
   <body>
 
     <div id="page_container">
-
       <h1>Lista de refeições</h1>
-
       <table class="datatable" id="table_meals">
         <thead>
           <tr>
@@ -36,14 +34,11 @@
         <tbody>
         </tbody>
       </table>
-
     </div>
 
     <div class="lightbox_container">
-
         <h2>Adicionar refeição</h2>
         <form class="form add" id="form_meal" data-id="" novalidate>
-
           <div class="input_container">
             <label for="name">Nome: <span class="required">*</span></label>
             <div class="field_container">
@@ -75,9 +70,10 @@
             </div>
           </div>
           <div class="input_container">
-            <label for="meal_products">Produtos: <span class="required">*</span></label>
             <div class="field_container">
-              <input type="number" step="1" min="0" class="text" name="meal_products" id="meal_products" value="" required>
+            <label for="meal_products">Produtos: <span class="required">*</span></label>
+            <select multiple="multiple" id="meal_products_list" name="meal_products_list">
+            </select>
             </div>
           </div>
           <div class="button_container">

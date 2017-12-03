@@ -2,7 +2,6 @@ var router = require('express').Router();
 var model = require('../models/Meal');
 
 router.get('/',  function(req, res, next){
-  console.log("Meals get");
   model.getAll(req, res, next)
     .then(function (data) {
       res.status(200)
@@ -17,7 +16,6 @@ router.get('/',  function(req, res, next){
 });
 
 router.get('/:id',  function(req, res, next){
-  console.log("Meals get single");
   model.getSingle(req, res, next)
     .then(function (data) {
       res.status(200)
@@ -33,7 +31,6 @@ router.get('/:id',  function(req, res, next){
 
 
 router.post('/',  function(req, res, next){
-  console.log("Meals post");
   model.create(req, res, next)
     .then(function (data) {
       res.status(200)
@@ -48,7 +45,6 @@ router.post('/',  function(req, res, next){
 });
 
 router.put('/:id',  function(req, res, next){
-  console.log("Meals update");
   model.update(req, res, next)
     .then(function (data) {
       res.status(200)
@@ -62,7 +58,6 @@ router.put('/:id',  function(req, res, next){
 });
 
 router.delete('/:id',  function(req, res, next){
-  console.log("Meals delete");
   model.delete(req, res, next)
     .then(function (result) {
       res.status(200)
