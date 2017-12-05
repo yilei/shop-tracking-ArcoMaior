@@ -42,6 +42,18 @@ function getAllMeals(req, res, next) {
     return db.query(query_sting)
 }
 
+function getSingleMeal(req, res, next) {
+  // Get all meals with their products name, having or not products
+  var id = parseInt(req.params.id)
+  var query_sting = "SELECT meals.*, string_agg(products.name, ', ') as products \
+                          FROM meals \
+                          LEFT OUTER JOIN meal_products ON meals.id=meal_products.meal_id \
+                          LEFT OUTER JOIN products ON products.id=meal_products.product_id \
+                          WHERE meals.id = $1 \
+                          GROUP BY meals.id;"
+    return db.one(query_sting, id)
+}
+
 function getAllProductsInStock(req, res, next) {
   // Get all meals with their products name, having or not products
     var query_string = "SELECT stocks.id as id, name, description,amount \
@@ -52,16 +64,26 @@ function getAllProductsInStock(req, res, next) {
 }
 
 function batchInsertMealProducts(req, res, next, id ,products){
-  var prod_id = id;
-    console.log(products);
   products.map(x => {x.product_id=x.id; delete x.id});
   products.map(x => x.meal_id=id );
   products.map(x => x.price=0 );
-  console.log(products);
   const query = db.$config.pgp.helpers.insert(products,['meal_id' , 'product_id', 'amount', 'price'], 'meal_products');
   return db.query(query)
-
 }
+
+function updateStocksFromMeal(req, res, next, product_list){
+   db.tx(t => {
+      const queries = product_list.map(p => {
+          return t.none('UPDATE stocks SET amount = amount - $1 WHERE product_id=$2; ', [p.amount, p.product_id]);
+      });
+      return t.batch(queries);
+  }).then(data => {
+        return data;
+  }).catch(error => {
+      throw error;
+  });
+}
+
 module.exports = {
   getAll: getAll,
   getSingle: getSingle,
@@ -69,7 +91,8 @@ module.exports = {
   update: update,
   deletes: deletes,
   getAllMeals: getAllMeals,
+  getSingleMeal: getSingleMeal,
   getAllProductsInStock:getAllProductsInStock,
-  batchInsertMealProducts:batchInsertMealProducts
-
+  batchInsertMealProducts:batchInsertMealProducts,
+  updateStocksFromMeal:updateStocksFromMeal
 };

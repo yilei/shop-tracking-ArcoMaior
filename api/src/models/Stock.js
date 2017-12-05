@@ -21,3 +21,9 @@ exports.update = function(req, res, next) {
 exports.delete = function(req, res, next) {
    return dal.deletes(req, res, next,"stocks")
 }
+
+exports.updateStocksFromMeal = function(req, res, next, meal_id, product_list){
+  console.log("Meal:"+meal_id+"  Decreasing the following product stocks");
+  console.log(product_list);
+  return dal.updateStocksFromMeal(req, res, next, product_list);
+}

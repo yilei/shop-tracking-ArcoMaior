@@ -27,5 +27,6 @@ exports.delete = function(req, res, next) {
 }
 
 exports.addMealProducts = function(req, res, next, id ,products){
+         console.log("Prod created executed");
     return dal.batchInsertMealProducts(req, res, next, id ,products);
 }

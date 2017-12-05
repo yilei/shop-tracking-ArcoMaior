@@ -2,7 +2,7 @@ $(document).ready(function(){
   // On page load: datatable
   var table_meals =  $('#table_meals').DataTable({
     "ajax": {
-      "url": "http://localhost:3000/meals",
+      "url": window.origin+":3000/meals",
       "dataSrc": 'data',
       "type": "GET"
     },
@@ -44,7 +44,7 @@ $(document).ready(function(){
         var row = table_meals.row( $(this).closest('tr') )
         var id = row.data().id;
         $.ajax({
-          url: 'http://localhost:3000/meals/'+id,
+          url: window.origin+':3000/meals/'+id,
           dataType: 'json',
           type:'DELETE',
           success: function (response) {
@@ -68,16 +68,15 @@ $(document).ready(function(){
           var id = parseInt(entry)
           data.products.push( { 'id' : id, 'amount' :  list[id].toBeUsed} );
       });
-      console.log(data);
+      console.log(list)
       $.ajax({
-        url: "http://localhost:3000/meals",
+        url: window.origin+":3000/meals",
         type: "POST",
         data: data,
         dataType: 'json',
         success: function(response) {
-            data.id = response.data[0].id
-            table_meals.row.add(data).draw();
-            alert("Nova refeição adicionada");
+            table_meals.ajax.reload();
+            $('#form_meal')[0].reset();
         },
         error: function(jqXHR, textStatus, errorThrown) {
           alert(xhr.status + thrownError);
@@ -107,7 +106,7 @@ $(document).ready(function(){
   // Get products in stock
   $.ajax({
            type: "GET",
-           url: "http://localhost:3000/products/inStock",
+           url: window.origin+":3000/products/inStock",
            contentType: "application/json; charset=utf-8",
            dataType: 'json',
            success: function OnPopulateControl(response) {
@@ -116,7 +115,6 @@ $(document).ready(function(){
                  list[response.data[i].id] = response.data[i];
                }
                $.each(list, function () {
-                  console.log(this);
                   $('#meal_products_list').multiSelect('addOption', { value: this.id, text: generateProdDescription(this.name,this.description)});
                });
 
