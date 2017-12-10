@@ -42,6 +42,15 @@ function getAllMeals(req, res, next) {
     return db.query(query_sting)
 }
 
+
+function getAllStocks(req, res, next) {
+  // Get all meals with their products name, having or not products
+    var query_sting = "SELECT stocks.*, products.name || ' (' || products.description || ')' as name \
+                          FROM stocks \
+                          JOIN products ON products.id=product_id;"
+    return db.query(query_sting)
+}
+
 function getSingleMeal(req, res, next) {
   // Get all meals with their products name, having or not products
   var id = parseInt(req.params.id)
@@ -63,6 +72,12 @@ function getAllProductsInStock(req, res, next) {
     return db.query(query_string)
 }
 
+function getMealProducts(req, res, next){
+   var id = parseInt(req.params.id)
+   var query_sting = "SELECT product_id, amount FROM meal_products WHERE meal_id=$1"
+   return db.any(query_sting, id)
+}
+
 function batchInsertMealProducts(req, res, next, id ,products){
   products.map(x => {x.product_id=x.id; delete x.id});
   products.map(x => x.meal_id=id );
@@ -71,17 +86,20 @@ function batchInsertMealProducts(req, res, next, id ,products){
   return db.query(query)
 }
 
-function updateStocksFromMeal(req, res, next, product_list){
-   db.tx(t => {
-      const queries = product_list.map(p => {
-          return t.none('UPDATE stocks SET amount = amount - $1 WHERE product_id=$2; ', [p.amount, p.product_id]);
-      });
-      return t.batch(queries);
-  }).then(data => {
-        return data;
-  }).catch(error => {
-      throw error;
-  });
+function updateStocksAmount(op){
+  var op = op;
+  return function(req, res, next, product_list){
+     db.tx(t => {
+        const queries = product_list.map(p => {
+            return t.none('UPDATE stocks SET amount = amount '+op+' $1 WHERE product_id=$2; ', [p.amount , p.product_id]);
+        });
+        return t.batch(queries);
+    }).then(data => {
+          return data;
+    }).catch(error => {
+         return next(err);
+    });
+  }
 }
 
 module.exports = {
@@ -91,8 +109,10 @@ module.exports = {
   update: update,
   deletes: deletes,
   getAllMeals: getAllMeals,
+  getAllStocks:  getAllStocks,
   getSingleMeal: getSingleMeal,
   getAllProductsInStock:getAllProductsInStock,
   batchInsertMealProducts:batchInsertMealProducts,
-  updateStocksFromMeal:updateStocksFromMeal
+  updateStocksAmount:updateStocksAmount,
+  getMealProducts: getMealProducts
 };
