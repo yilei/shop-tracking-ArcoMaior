@@ -3,7 +3,7 @@ var dal = require("./DAL")
 
 // add query functions
 exports.getAll = function(req, res, next) {
-   return dal.getAll(req, res, next,"stocks")
+   return dal.getAllStocks(req, res, next,"stocks")
 }
 
 exports.getSingle = function(req, res, next) {
@@ -22,8 +22,10 @@ exports.delete = function(req, res, next) {
    return dal.deletes(req, res, next,"stocks")
 }
 
-exports.updateStocksFromMeal = function(req, res, next, meal_id, product_list){
-  console.log("Meal:"+meal_id+"  Decreasing the following product stocks");
-  console.log(product_list);
-  return dal.updateStocksFromMeal(req, res, next, product_list);
+exports.decreaseStocksAmount = function(req, res, next, product_list){
+  return dal.updateStocksAmount('-')(req, res, next, product_list);
+}
+
+exports.increaseStocksAmount = function(req, res, next, product_list){
+  return dal.updateStocksAmount('+')(req, res, next, product_list);
 }
