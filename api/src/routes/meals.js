@@ -59,11 +59,11 @@ router.put('/:id',  function(req, res, next){
 
 router.delete('/:id',  function(req, res, next){
   model.delete(req, res, next)
-    .then(function (result) {
+    .then(function () {
       res.status(200)
         .json({
           status: 'success',
-          message: `Removed ${result.rowCount} player`
+          message: `Removed meal`
         });
     }).catch(function (err) {
       return next(err);

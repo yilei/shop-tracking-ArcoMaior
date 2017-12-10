@@ -7,12 +7,11 @@ $(document).ready(function(){
       "type": "GET"
     },
     "columns": [
-      { "data": "id"},
+      { "data": "day" },
       { "data": "name"},
       { "data": "description"},
       { "data": "type"},
       { "data": "people"},
-      { "data": "day" },
       { "data": "price_per_person"},
       { "data": "products"},
       { "data": "created_at"},
@@ -21,8 +20,8 @@ $(document).ready(function(){
     {
         "render": function ( data, type, row ) {
             return   '<div class="function_buttons"><ul>'
-                     + '<button class="function_edit">Edit</button>'
-                     + '<button class="function_delete">Delete</button>'
+                     /*+ '<button class="function_edit">Edit</button>'*/
+                     + '<button class="function_delete">Apagar</button>'
                      + '</ul></div>';
         },
         "targets": -1
@@ -33,11 +32,12 @@ $(document).ready(function(){
     },
   });
 
-  //Edit
+  /* Edit
   $('#table_meals tbody').on('click', '.function_edit', function () {
         var data = table_meals.row( $(this).closest('tr') ).data();
         alert( data.name +"'s salary is: "+ data.id );
   } );
+*/
 
   //Delete
   $('#table_meals tbody').on('click', '.function_delete', function () {
@@ -48,11 +48,11 @@ $(document).ready(function(){
           dataType: 'json',
           type:'DELETE',
           success: function (response) {
-            row.remove().draw();
+            location.reload();
             alert("O utilizador: "+id+" foi apagado com sucesso");
           },
           error: function (xhr, ajaxOptions, thrownError) {
-            alert(xhr.status + thrownError);
+            alert("Ocorreu um erro");
           }
         });
     });
@@ -68,18 +68,16 @@ $(document).ready(function(){
           var id = parseInt(entry)
           data.products.push( { 'id' : id, 'amount' :  list[id].toBeUsed} );
       });
-      console.log(list)
       $.ajax({
         url: window.origin+":3000/meals",
         type: "POST",
         data: data,
         dataType: 'json',
         success: function(response) {
-            table_meals.ajax.reload();
-            $('#form_meal')[0].reset();
+            location.reload();
         },
         error: function(jqXHR, textStatus, errorThrown) {
-          alert(xhr.status + thrownError);
+          alert("Ocorreu um erro");
         }
     });
   });
@@ -117,10 +115,10 @@ $(document).ready(function(){
                $.each(list, function () {
                   $('#meal_products_list').multiSelect('addOption', { value: this.id, text: generateProdDescription(this.name,this.description)});
                });
-
+               $('#meal_products_list').multiSelect('refresh');
            },
            error: function () {
-               alert("Error");
+               alert("Ocorreu um erro");
            }
   });
 
