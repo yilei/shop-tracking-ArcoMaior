@@ -42,6 +42,13 @@ function getAllMeals(req, res, next) {
     return db.query(query_sting)
 }
 
+function getAllShops(req, res, next) {
+  // Get all meals with their products name, having or not products
+    var query_sting = "SELECT shops.*, products.name as product_name, products.description as product_desc \
+                          FROM shops \
+                          JOIN products ON products.id=shops.product_id;"
+    return db.query(query_sting)
+}
 
 function getAllStocks(req, res, next) {
   // Get all meals with their products name, having or not products
@@ -110,6 +117,7 @@ module.exports = {
   deletes: deletes,
   getAllMeals: getAllMeals,
   getAllStocks:  getAllStocks,
+  getAllShops: getAllShops,
   getSingleMeal: getSingleMeal,
   getAllProductsInStock:getAllProductsInStock,
   batchInsertMealProducts:batchInsertMealProducts,

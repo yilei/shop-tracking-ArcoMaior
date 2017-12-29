@@ -1,20 +1,18 @@
 $(document).ready(function(){
   // On page load: datatable
-  var table_meals =  $('#table_meals').DataTable({
+  var table_shops =  $('#table_shop').DataTable({
     "ajax": {
-      "url": window.origin+":3000/meals",
+      "url": window.origin+":3000/shops",
       "dataSrc": 'data',
       "type": "GET"
     },
     "columns": [
       { "data": "day" },
-      { "data": "name"},
       { "data": "description"},
-      { "data": "type"},
-      { "data": "people"},
-      { "data": "price_per_person"},
-      { "data": "products"},
-      { "data": "created_at"},
+      { "data": "product_name"},
+      { "data": "price"},
+      { "data": "amount"},
+      { "data": ""}
     ],
     "columnDefs": [
     {
@@ -32,24 +30,37 @@ $(document).ready(function(){
     },
   });
 
-  /* Edit
-  $('#table_meals tbody').on('click', '.function_edit', function () {
-        var data = table_meals.row( $(this).closest('tr') ).data();
-        alert( data.name +"'s salary is: "+ data.id );
-  } );
-*/
+  //Add product
+  $(document).on('submit', '#form_product.add', function(e){
+      e.preventDefault();
+      var data = {};
+      $("#form_product.add").serializeArray().map(function(x){data[x.name] = x.value;});
+      $.ajax({
+        url: window.origin+":3000/products",
+        type: "POST",
+        data: data,
+        dataType: 'json',
+        success: function(response) {
+            location.reload();
+            alert("Produto adicionado com sucesso")
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          alert("Ocorreu um erro");
+        }
+    });
+  });
 
   //Delete
-  $('#table_meals tbody').on('click', '.function_delete', function () {
-        var row = table_meals.row( $(this).closest('tr') )
+  $('#table_shop tbody').on('click', '.function_delete', function () {
+        var row = table_shops.row( $(this).closest('tr') )
         var id = row.data().id;
         $.ajax({
-          url: window.origin+':3000/meals/'+id,
+          url: window.origin+':3000/shops/'+id,
           dataType: 'json',
           type:'DELETE',
           success: function (response) {
             location.reload();
-            alert("O utilizador: "+id+" foi apagado com sucesso");
+            alert("A compras: "+id+" foi apagado com sucesso");
           },
           error: function (xhr, ajaxOptions, thrownError) {
             alert("Ocorreu um erro");
@@ -69,7 +80,7 @@ $(document).ready(function(){
           data.products.push( { 'id' : id, 'amount' :  list[id].toBeUsed} );
       });
       $.ajax({
-        url: window.origin+":3000/meals",
+        url: window.origin+":3000/shops",
         type: "POST",
         data: data,
         dataType: 'json',
@@ -82,29 +93,11 @@ $(document).ready(function(){
     });
   });
 
-  $('#meal_products_list').multiSelect({ keepOrder: true ,
-         afterSelect: function(values){
-           var stock = list[values];
-           var quantity = parseInt(prompt("Em stock: "+stock.amount+"\nQuantidade:", "1"));
-           if (quantity > 0 || quantity < stock) {
-             stock.toBeUsed = quantity;
-
-             var desc = $('#meal_products_list').find("option[value='"+values+"']").text();
-             $("span:contains('"+desc+"'):last").text(generateProdDescription(stock.name,stock.description,stock.toBeUsed,stock.amount));
-
-           } else {
-               $('#meal_products_list').multiSelect('deselect', values);
-           }
-         },
-         afterDeselect: function(values){
-           //alert("Deselect value: "+values);
-         }
-  });
 
   // Get products in stock
   $.ajax({
            type: "GET",
-           url: window.origin+":3000/products/inStock",
+           url: window.origin+":3000/products",
            contentType: "application/json; charset=utf-8",
            dataType: 'json',
            success: function OnPopulateControl(response) {
@@ -112,10 +105,12 @@ $(document).ready(function(){
                for (var i = 0, len = response.data.length; i < len; i++) {
                  list[response.data[i].id] = response.data[i];
                }
-               $.each(list, function () {
-                  $('#meal_products_list').multiSelect('addOption', { value: this.id, text: generateProdDescription(this.name,this.description)});
+               var listitems = '';
+               $.each(list, function(key, value){
+                 listitems += '<option value=' + key + '>' + value.name +' '+ value.description + '</option>';
                });
-               $('#meal_products_list').multiSelect('refresh');
+
+               $('#product').append(listitems);
            },
            error: function () {
                alert("Ocorreu um erro");
@@ -123,7 +118,10 @@ $(document).ready(function(){
   });
 
   //Set default date to today
-  document.getElementById('date').valueAsDate = new Date(day,month,year);
+  document.getElementById('date').valueAsDate = new Date();
+  console.log(new Date())
+
+ $('#date').datepicker({ dateFormat: 'dd-mm-yy' }).val();
 
   function generateProdDescription(name,description,stock,amount){
     var description = name+" ("+description+")";

@@ -3,7 +3,12 @@ var dal = require("./DAL")
 
 // add query functions
 exports.getAll = function(req, res, next) {
-   return dal.getAll(req, res, next,"shops")
+   return dal.getAllShops(req, res, next).then(list =>{
+       list.map(x => {
+         x.day = new Date(x.day).toLocaleString('pt-PT',{year: 'numeric', month: 'numeric', day: 'numeric' })
+       });
+       return list;
+   })
 }
 
 exports.getSingle = function(req, res, next) {
@@ -19,5 +24,6 @@ exports.update = function(req, res, next) {
 }
 
 exports.delete = function(req, res, next) {
+  console.log("deletes")
    return dal.deletes(req, res, next,"shops")
 }
