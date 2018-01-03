@@ -1,54 +1,90 @@
 <!doctype html>
 <html lang="en" dir="ltr">
-  <head>
-    <title>Arco Maior gestão de stocks</title>
+
+<head>
+    <title>Arco Maior II - Produtos</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=1000, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link href="css/grid.css" type="text/css" rel="stylesheet">
+    <link href="css/normalize.css" type="text/css" rel="stylesheet">
+    <link href="css/style_prod.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400,400i,700,900" rel="stylesheet">
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" type="text/css" rel="stylesheet">
     <script charset="utf-8" src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script charset="utf-8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
     <script charset="utf-8" src="//cdn.jsdelivr.net/jquery.validation/1.13.1/jquery.validate.min.js"></script>
     <script charset="utf-8" src="js/product.js"></script>
-  </head>
-  <body>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="row">
+                <ul class="main-nav">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="stocks.html">Armazém</a></li>
+                    <li><a href="shop.html">Compras</a></li>
+                    <li><a href="meal.html">Refeições</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
     <div id="page_container">
-      <h1>Lista de refeições</h1>
-      <table class="datatable" id="table_products">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Descrição</th>
-            <th>Opções</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
+        <h1>Lista de Produtos</h1>
+        <table class="datatable" id="table_products">
+            <thead>
+                <tr>
+                    <th class="id">ID</th>
+                    <th class="name">Nome</th>
+                    <th class="description">Descrição</th>
+                    <th class="options">Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
     </div>
 
     <div class="lightbox_container">
-        <h2>Adicionar refeição</h2>
+        <h2>Adicionar produto</h2>
         <form class="form add" id="form_product" data-id="" novalidate>
-          <div class="input_container">
-            <label for="name">Nome: <span class="required">*</span></label>
-            <div class="field_container">
-              <input type="text" step="1" min="0" class="text" name="name" id="name" value="" required>
+            <div class="row form-data">
+                <div class="col span-1-of-2">
+                    <label for="name">Nome: <span class="required">*</span></label>
+                </div>
+                <div class="col span-1-of-2">
+                    <input type="text" step="1" min="0" class="text" name="name" id="name" value="" required>
+                </div>
             </div>
-          </div>
-          <div class="input_container">
-            <label for="description">Descrição: <span class="required">*</span></label>
-            <div class="field_container">
-              <input type="text" class="text" name="description" id="description" value="" required>
+            <div class="row form-data">
+                <div class="col span-1-of-2">
+                    <label for="description">Descrição: <span class="required">*</span></label>
+                </div>
+                <div class="col span-1-of-2">
+                    <input type="text" class="text" name="description" id="description" value="" required>
+                </div>
             </div>
-          </div>
-          <div class="button_container">
-            <button type="submit">Adicionar refeição</button>
-          </div>
+            <div class="button_container">
+                <input type="submit" value="Adicionar">
+            </div>
         </form>
-
     </div>
+    <footer>
+        <div class="row">
+            <div class="col span-1-of-2">
+                <p>Arco Maior 2 &#124; Gestão de Refeições 2018</p>
+            </div>
+            <div class="col span-1-of-2">
+                <ul class="social-icons">
+                    <li><a class="social" href="https://www.facebook.com/arco.maior" target="_blank"><i class="icon-small ion-social-facebook"></i></a></li>
+                    <li><a class="social"  href="http://arcomaior.pt" target="_blank"><i class="icon-small ion-android-home"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
-  </body>
+</body>
+
 </html>
