@@ -22,7 +22,7 @@ CREATE TABLE meals (
     type TEXT NOT NULL,
     people INTEGER,
     day DATE NOT NULL ,
-    price_per_person NUMERIC(2),
+    price_per_person float(1),
     created_at TIMESTAMP NOT NULL DEFAULT now()
 );
 INSERT into meals values(DEFAULT,'Bacalhau com broa','Dia do Juiz','Peixe',30,'2017-09-21');
@@ -34,8 +34,8 @@ CREATE TABLE shops (
     description TEXT NOT NULL DEFAULT '',
     day DATE NOT NULL ,
     product_id INTEGER REFERENCES products (id) ,
-    amount  NUMERIC(2),
-    price  NUMERIC(2),
+    amount  float(1),
+    price  float(1),
     created_at TIMESTAMP NOT NULL DEFAULT now()
 );
 INSERT into shops values(DEFAULT,'Maria foi as compras','2017-09-22',1,1,5);
@@ -49,8 +49,8 @@ INSERT into shops values(DEFAULT,'Ines foi as compras','2017-09-21',4,10,5);
 CREATE TABLE stocks (
     id SERIAL PRIMARY KEY,
     product_id INTEGER REFERENCES products (id) ,
-    amount INTEGER ,
-    price NUMERIC(2),
+    amount float(1) ,
+    price float(1),
     created_at TIMESTAMP NOT NULL DEFAULT now()
 );
 INSERT into stocks values(DEFAULT,1,1,5);
@@ -64,8 +64,8 @@ INSERT into stocks values(DEFAULT,6,0,7);
 CREATE TABLE meal_products (
   meal_id INTEGER REFERENCES meals (id) on delete cascade,
   product_id INTEGER REFERENCES products (id) on delete cascade,
-  amount  NUMERIC(2),
-  price  NUMERIC(2)
+  amount  float(1),
+  price  float(1)
 );
 INSERT into meal_products values(1,1,1,5);
 INSERT into meal_products values(1,5,10,5);

@@ -1,4 +1,4 @@
-$(document).ready(function(){
+ $(document).ready(function(){
   // On page load: datatable
   var table_shops =  $('#table_shop').DataTable({
     "ajax": {
@@ -68,17 +68,12 @@ $(document).ready(function(){
         });
     });
 
-  //Add
-  $(document).on('submit', '#form_meal.add', function(e){
+  //Add shop
+  $(document).on('submit', '#form_shop.add', function(e){
       e.preventDefault();
       var data = {};
-      $("#form_meal.add").serializeArray().map(function(x){data[x.name] = x.value;});
-      delete data.meal_products_list;
-      data.products = [];
-      $('#meal_products_list').val().forEach(function(entry) {
-          var id = parseInt(entry)
-          data.products.push( { 'id' : id, 'amount' :  list[id].toBeUsed} );
-      });
+      $("#form_shop.add").serializeArray().map(function(x){data[x.name] = x.value;});
+      console.log(data)
       $.ajax({
         url: window.origin+":3000/shops",
         type: "POST",
@@ -118,10 +113,8 @@ $(document).ready(function(){
   });
 
   //Set default date to today
-  document.getElementById('date').valueAsDate = new Date();
+  document.getElementById('day').valueAsDate = new Date();
   console.log(new Date())
-
- $('#date').datepicker({ dateFormat: 'dd-mm-yy' }).val();
 
   function generateProdDescription(name,description,stock,amount){
     var description = name+" ("+description+")";

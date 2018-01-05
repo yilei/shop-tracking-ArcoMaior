@@ -1,77 +1,70 @@
 var db = require("./DB")
 
 // add query functions
-function getAll(req, res, next, type) {
+function getAll(type) {
     return db.any('select * from $1:name',type)
 }
 
-function getSingle(req, res, next , type) {
-  var id = parseInt(req.params.id)
+function getSingle(id , type) {
   return db.one('select * from $1:name where id = $2',[type, id])
 }
 
 
-function create(req, res, next , type) {
-  //console.log(req.query)
-  var query_string = db.$config.pgp.helpers.insert(req.body, null, type)+"RETURNING id";
-  console.log(query_string);
+function create(obj, type) {
+  var query_string = db.$config.pgp.helpers.insert(obj, null, type)+"RETURNING id";
   return db.query(query_string)
 }
 
-function update(req, res, next , type) {
-  //console.log(req.query)
-  var query_string = db.$config.pgp.helpers.update(req.body, null, type) + ' WHERE id = ' + parseInt(req.params.id);
-  console.log(query_string);
+function update(id, body , type) {
+  var query_string = db.$config.pgp.helpers.update(body, null, type) + ' WHERE id = ' + id;
   return db.none(query_string)
 }
 
 // delete name was returning the following error SyntaxError: Unexpected token delete
-function deletes(req, res, next , type) {
-  //console.log(req.query)
-  var id = parseInt(req.params.id)
+function deletes(id , type) {
   return db.result('delete  from $1:name where id = $2',[type, id])
 }
 
-function getAllMeals(req, res, next) {
+function getAllMeals() {
   // Get all meals with their products name, having or not products
-    var query_sting = "SELECT meals.*, string_agg(products.name, ', ') as products \
+  var query_string = "SELECT meals.*, string_agg(products.name, ', ') as products \
                           FROM meals \
                           LEFT OUTER JOIN meal_products ON meals.id=meal_products.meal_id \
                           LEFT OUTER JOIN products ON products.id=meal_products.product_id \
                           GROUP BY meals.id;"
-    return db.query(query_sting)
+  return db.query(query_string)
 }
 
-function getAllShops(req, res, next) {
-  // Get all meals with their products name, having or not products
-    var query_sting = "SELECT shops.*, products.name as product_name, products.description as product_desc \
+function getAllShops() {
+    var query_string = "SELECT shops.*, products.name as product_name, products.description as product_desc \
                           FROM shops \
                           JOIN products ON products.id=shops.product_id;"
-    return db.query(query_sting)
+    return db.query(query_string)
 }
 
-function getAllStocks(req, res, next) {
-  // Get all meals with their products name, having or not products
-    var query_sting = "SELECT stocks.*, products.name || ' (' || products.description || ')' as name \
+function getAllStocks() {
+    var query_string = "SELECT stocks.*, products.name || ' (' || products.description || ')' as name \
                           FROM stocks \
                           JOIN products ON products.id=product_id;"
-    return db.query(query_sting)
+    return db.query(query_string)
 }
 
-function getSingleMeal(req, res, next) {
-  // Get all meals with their products name, having or not products
-  var id = parseInt(req.params.id)
-  var query_sting = "SELECT meals.*, string_agg(products.name, ', ') as products \
+function getSingleMeal(id) {
+  var query_string = "SELECT meals.*, string_agg(products.name, ', ') as products \
                           FROM meals \
                           LEFT OUTER JOIN meal_products ON meals.id=meal_products.meal_id \
                           LEFT OUTER JOIN products ON products.id=meal_products.product_id \
                           WHERE meals.id = $1 \
                           GROUP BY meals.id;"
-    return db.one(query_sting, id)
+    return db.one(query_string, id)
 }
 
-function getAllProductsInStock(req, res, next) {
-  // Get all meals with their products name, having or not products
+function getStockByProdId(id) {
+    var query_string = "SELECT * FROM stocks WHERE product_id = $1;"
+    return db.any(query_string, id)
+}
+
+function getAllProductsInStock() {
     var query_string = "SELECT stocks.id as id, name, description,amount \
                           FROM products \
                           JOIN stocks ON products.id=stocks.product_id \
@@ -79,13 +72,12 @@ function getAllProductsInStock(req, res, next) {
     return db.query(query_string)
 }
 
-function getMealProducts(req, res, next){
-   var id = parseInt(req.params.id)
-   var query_sting = "SELECT product_id, amount FROM meal_products WHERE meal_id=$1"
-   return db.any(query_sting, id)
+function getMealProducts(id){
+   var query_string = "SELECT product_id, amount FROM meal_products WHERE meal_id=$1"
+   return db.any(query_string, id)
 }
 
-function batchInsertMealProducts(req, res, next, id ,products){
+function batchInsertMealProducts(id ,products){
   products.map(x => {x.product_id=x.id; delete x.id});
   products.map(x => x.meal_id=id );
   products.map(x => x.price=0 );
@@ -95,7 +87,7 @@ function batchInsertMealProducts(req, res, next, id ,products){
 
 function updateStocksAmount(op){
   var op = op;
-  return function(req, res, next, product_list){
+  return function(product_list){
      db.tx(t => {
         const queries = product_list.map(p => {
             return t.none('UPDATE stocks SET amount = amount '+op+' $1 WHERE product_id=$2; ', [p.amount , p.product_id]);
@@ -103,8 +95,8 @@ function updateStocksAmount(op){
         return t.batch(queries);
     }).then(data => {
           return data;
-    }).catch(error => {
-         return next(err);
+    }).catch(err => {
+         return error(err);
     });
   }
 }
@@ -122,5 +114,6 @@ module.exports = {
   getAllProductsInStock:getAllProductsInStock,
   batchInsertMealProducts:batchInsertMealProducts,
   updateStocksAmount:updateStocksAmount,
-  getMealProducts: getMealProducts
+  getMealProducts: getMealProducts,
+  getStockByProdId: getStockByProdId
 };

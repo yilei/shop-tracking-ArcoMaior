@@ -55,12 +55,12 @@
     </div>
 
     <div class="lightbox_container">
-        <h2>Adicionar refeição</h2>
+        <h2>Adicionar compra</h2>
         <form class="form add" id="form_shop" data-id="" novalidate>
           <div class="input_container">
             <label for="name">Dia: <span class="required">*</span></label>
             <div class="field_container">
-              <input type="date" step="1" min="0" class="text" name="name" id="date" value="" required>
+              <input type="date" class="text" name="day" id="day" required>
             </div>
           </div>
           <div class="input_container">
@@ -72,19 +72,19 @@
           <div class="input_container">
             <label for="type">Produto: <span class="required">*</span></label>
             <div class="field_container">
-              <select name="product" id="product"></select>
+              <select name="product_id" id="product"></select>
             </div>
           </div>
           <div class="input_container">
             <label for="type">Preço: <span class="required">*</span></label>
             <div class="field_container">
-              <input type="number" class="text" name="type" id="price" value="" required>
+              <input type="number" step=any min="0" class="text" name="price" id="price" value="" required>
             </div>
           </div>
           <div class="input_container">
             <label for="type">Quantidade: <span class="required">*</span></label>
             <div class="field_container">
-              <input type="number" class="text" name="type" id="quantity" value="" required>
+              <input type="number" class="text" step=any name="amount" id="amount" value="" required>
             </div>
           </div>
           <div class="button_container">

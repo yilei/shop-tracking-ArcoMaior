@@ -3,29 +3,29 @@ var dal = require("./DAL")
 
 // add query functions
 exports.getAll = function(req, res, next) {
-   return dal.getAll(req, res, next,"products")
+   return dal.getAll("products")
 }
 
 exports.getSingle = function(req, res, next) {
-   return dal.getSingle(req, res, next,"products")
+   return dal.getSingle(parseInt(req.params.id),"products")
 }
 
 exports.getAllInStock = function(req, res, next) {
-   return dal.getAllProductsInStock(req, res, next)
+   return dal.getAllProductsInStock()
 }
 
 exports.create = function(req, res, next) {
-   return dal.create(req, res, next,"products")
+   return dal.create(req.body, "products")
 }
 
 exports.update = function(req, res, next) {
-   return dal.update(req, res, next,"products")
+   return dal.update(parseInt(req.params.id), req.body,"products")
 }
 
 exports.delete = function(req, res, next) {
-   return dal.deletes(req, res, next,"products")
+   return dal.deletes(parseInt(req.params.id),"products")
 }
 
-exports.addMealProducts = function(req, res, next, id ,products){
-  return dal.batchInsertMealProducts(req, res, next, id ,products);
+exports.addMealProducts = function(id ,products){
+  return dal.batchInsertMealProducts( id ,products);
 }
