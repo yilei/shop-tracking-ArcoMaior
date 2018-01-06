@@ -54,13 +54,16 @@ h2 {
     word-spacing: 1px;
     line-height: 150%;
     width:70%;
-    margin-left: 15%;
+    margin:auto;
 }
 
 /* ---- Icon Box --------*/
 
 .icon-box {
-    margin: 40px 200px;
+    width: 70%;
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 50px;
 }
 
 .icon-box p {
@@ -77,14 +80,22 @@ h2 {
     text-align: center;
 }
 
+.icon-big:hover,
+.icon-big:active {
+    display: block;
+    font-size: 650%;
+    text-align: center;
+    color: #236d7e;
+}
+
 .link:link,
 .link:visited {
     text-decoration: none;
     text-transform: uppercase;
     color: #434343;
-    margin-left: 55px;
     border-bottom: 1px solid transparent;
     padding-bottom: 1px;
+    margin-left: 55px;
 }
 
 .link:hover,

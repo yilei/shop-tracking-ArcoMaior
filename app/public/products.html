@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=1000, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <link href="css/grid.css" type="text/css" rel="stylesheet">
-    <link href="css/normalize.css" type="text/css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" type="text/css" rel="stylesheet">
     <link href="css/style_prod.css" type="text/css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400,400i,700,900" rel="stylesheet">
     <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" type="text/css" rel="stylesheet">
@@ -15,6 +15,17 @@
     <script charset="utf-8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
     <script charset="utf-8" src="//cdn.jsdelivr.net/jquery.validation/1.13.1/jquery.validate.min.js"></script>
     <script charset="utf-8" src="js/product.js"></script>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/fonts/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/fonts/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/fonts/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/fonts/favicons/manifest.json">
+    <link rel="mask-icon" href="/fonts/favicons/safari-pinned-tab.svg" color="#18515e">
+    <link rel="shortcut icon" href="/fonts/favicons/favicon.ico">
+    <meta name="msapplication-config" content="/fonts/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
 </head>
 
 <body>
@@ -23,8 +34,8 @@
             <div class="row">
                 <ul class="main-nav">
                     <li><a href="index.html">Início</a></li>
-                    <li><a href="stocks.html">Armazém</a></li>
                     <li><a href="shop.html">Compras</a></li>
+                    <li><a href="stocks.html">Armazém</a></li>
                     <li><a href="meal.html">Refeições</a></li>
                 </ul>
             </div>
@@ -47,7 +58,9 @@
         </table>
     </div>
 
-    <div class="lightbox_container">
+    <button class="final-btn" onclick="myFunction()">Adicionar novo produto</button>
+
+    <div class="lightbox_container" id="myDIV">
         <h2>Adicionar produto</h2>
         <form class="form add" id="form_product" data-id="" novalidate>
             <div class="row form-data">
@@ -71,6 +84,17 @@
             </div>
         </form>
     </div>
+
+    <script>
+        function myFunction() {
+            if ($("#myDiv").css("display") === "none") {
+              $("#myDiv").css({"display":"block"});
+            } else {
+              $("#myDiv").css({"display":"none"});
+            }
+        }
+    </script>
+
     <footer>
         <div class="row">
             <div class="col span-1-of-2">
@@ -79,7 +103,7 @@
             <div class="col span-1-of-2">
                 <ul class="social-icons">
                     <li><a class="social" href="https://www.facebook.com/arco.maior" target="_blank"><i class="icon-small ion-social-facebook"></i></a></li>
-                    <li><a class="social"  href="http://arcomaior.pt" target="_blank"><i class="icon-small ion-android-home"></i></a></li>
+                    <li><a class="social" href="http://arcomaior.pt" target="_blank"><i class="icon-small ion-android-home"></i></a></li>
                 </ul>
             </div>
         </div>

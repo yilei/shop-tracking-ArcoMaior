@@ -73,4 +73,12 @@ $(document).ready(function(){
     });
   });
 
+  function myFunction() {
+      if (x.style.display === "none") {
+        $("#myDiv").css({"display":"block"});
+      } else {
+        $("#myDiv").css({"display":"none"});
+      }
+  }
+
 });

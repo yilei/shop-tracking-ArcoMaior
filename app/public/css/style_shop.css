@@ -20,9 +20,9 @@ body {
     background: #fbfbfb;
 }
 
-/* ----------- SECTION ------------------*/
+/* ----------- INICIAL ------------------*/
 
-/* ---- Header ------*/
+/* ---- Headers ------*/
 
 .main-nav {
     list-style: none;
@@ -35,7 +35,7 @@ body {
     margin-right: 20px;
 }
 
-.main-nav li a:link,
+.main-nav li a:link, 
 .main-nav li a:visited {
     font-size: 80%;
     text-decoration: none;
@@ -43,7 +43,7 @@ body {
     cursor: pointer;
 }
 
-.main-nav li a:hover,
+.main-nav li a:hover, 
 .main-nav li a:active {
     color: #18515E;
     transition: color 0.2s;
@@ -55,7 +55,7 @@ h1 {
     word-spacing: 2px;
     text-align: center;
     letter-spacing: 1px;
-    margin-top: 10px;
+    margin-top: 10px;  
     text-transform: uppercase;
 }
 
@@ -69,25 +69,24 @@ h1:after {
     margin-top: 10px;
 }
 
-/* ---- Ver produtos ------*/
+/* ---- Ver refeições ------*/
 
 /* Show results */
-
 .dataTables_length {
     font-size: 90%;
-    margin-left: 150px;
+    width: 90%;
+    margin: auto;
 }
 
 /* Search */
-
 .dataTables_filter {
     font-size: 90%;
-    margin-left: 150px;
+    width: 90%;
+    margin: auto;
     margin-top: 10px;
 }
 
 /* Search bar */
-
 input[type="search"] {
     margin-left: 20px;
 }
@@ -95,38 +94,30 @@ input[type="search"] {
 /* Table */
 
 .datatable {
-    width: 60%;
+    width: 90%;
     margin: auto;
     margin-top: 10px;
 }
-
+        
 th {
     text-transform: uppercase;
     font-size: 100%;
     background-color: #18515E;
     color: #f7f2e0;
-    padding: 18px;
+    padding: 16px;
 }
 
-th,
-td {
-    border-bottom: 1px solid #ddd;
-}
+th, td {border-bottom: 1px solid #ddd;}
 
-td {
-    padding: 8px;
-}
+td {padding: 8px;}
 
-tr:hover {
-    background-color: rgba(24, 81, 94, 0.28);
-}
+tr:hover {background-color: rgba(24, 81, 94, 0.28);}
 
 
 /* Showing */
-
 .dataTables_info {
     font-size: 90%;
-    width: 60%;
+    width: 90%;
     margin: auto;
     margin-top: 10px;
 }
@@ -134,7 +125,7 @@ tr:hover {
 /* Buttons */
 
 .dataTables_paginate {
-    width: 60%;
+    width: 90%;
     margin: auto;
     margin-top: 8px;
 }
@@ -144,15 +135,15 @@ tr:hover {
 }
 
 .paginate_button,
-input[type=submit] {
+input[type=submit]{
     background-color: #18515E;
     color: #f7f2e0;
-    border: 1px solid #18515E;
+    border: 1px solid #18515E; 
     border-radius: 5px;
     padding: 3px 7px;
     font-size: 90%;
     cursor: pointer;
-}
+} 
 
 .paginate_button:hover,
 .paginate_button:active,
@@ -161,28 +152,6 @@ input[type=submit]:active {
     background-color: #236d7e;
     border: 1px solid #236d7e;
 }
-
-/* ---- Adicionar produtos ------*/
-
-#myDIV {
-  display: none;
-}
-
-.final-btn {
-    background-color: #18515E;
-    color: #f7f2e0;
-    border: 1px solid #18515E;
-    border-radius: 5px;
-    padding: 3px 7px;
-    font-size: 100%;
-    cursor: pointer;
-    width: 20%;
-    margin-left: 40%;
-    margin-right: 40%;
-    margin-top: 15px;
-    margin-bottom: 30px;
-}
-
 
 .lightbox_container {
     width: 40%;
@@ -206,19 +175,24 @@ h2 {
     font-size: 90%;
 }
 
-input[type=submit] {
-    float: right;
-    margin-right: 20px;
+.text-number {
+    width: 45px;
 }
 
+input[type=submit] {
+    margin-left: 8px;
+}
+
+
 /* ---- Footer --------*/
+
 
 footer {
     background-color: rgba(24, 81, 94, 0.87);
 }
 
 footer p {
-    color: #f7f2e0;
+    color:#f7f2e0;
     font-size: 85%;
     margin-left: 15px;
 }
@@ -237,15 +211,15 @@ footer p {
 
 .social-icons li a:link,
 .social-icons li a:visited {
-    color: #f7f2e0;
+    color:#f7f2e0;
 }
 
 .social-icons li a:hover,
-.social-icons li a:active {
-    color: #f7f2e0;
+.social-icons li a:active{
+    color:#f7f2e0;
 }
 
 .ion-social-facebook:hover,
 .ion-android-home:hover {
-    color: #f04c4c;
+    color:#f04c4c;
 }
