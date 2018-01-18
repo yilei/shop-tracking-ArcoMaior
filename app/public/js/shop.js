@@ -113,8 +113,8 @@
   });
 
   //Set default date to today
-  document.getElementById('day').valueAsDate = new Date();
-  console.log(new Date())
+  $('#day').datepicker({dateFormat: 'dd-mm-yy'}).datepicker("setDate", new Date());
+
 
   function generateProdDescription(name,description,stock,amount){
     var description = name+" ("+description+")";

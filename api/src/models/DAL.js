@@ -12,7 +12,7 @@ function getSingle(id , type) {
 
 function create(obj, type) {
   var query_string = db.$config.pgp.helpers.insert(obj, null, type)+"RETURNING id";
-  return db.query(query_string)
+  return db.one(query_string)
 }
 
 function update(id, body , type) {
@@ -77,11 +77,26 @@ function getMealProducts(id){
    return db.any(query_string, id)
 }
 
+function getProductListPrice(products){
+  var products_to_search = []
+  products.forEach(x => {
+    products_to_search.push(parseInt(x.id));
+  });
+  var query_string = "SELECT product_id, price FROM stocks WHERE product_id in ($1:csv)"
+  return db.any(query_string,[products_to_search]);
+}
+
 function batchInsertMealProducts(id ,products){
-  products.map(x => {x.product_id=x.id; delete x.id});
-  products.map(x => x.meal_id=id );
-  products.map(x => x.price=0 );
-  const query = db.$config.pgp.helpers.insert(products,['meal_id' , 'product_id', 'amount', 'price'], 'meal_products');
+  var products_to_insert = []
+  products.forEach(x => {
+    products_to_insert.push({
+      product_id: x.id,
+      meal_id: id,
+      amount: parseFloat(x.amount),
+      price: parseFloat(x.price)
+    })
+  });
+  const query = db.$config.pgp.helpers.insert(products_to_insert,['meal_id' , 'product_id', 'amount', 'price'], 'meal_products');
   return db.query(query)
 }
 
@@ -90,7 +105,7 @@ function updateStocksAmount(op){
   return function(product_list){
      db.tx(t => {
         const queries = product_list.map(p => {
-            return t.none('UPDATE stocks SET amount = amount '+op+' $1 WHERE product_id=$2; ', [p.amount , p.product_id]);
+            return t.any('UPDATE stocks SET amount = amount '+op+' $1 WHERE product_id=$2; ', [p.amount , p.id]);
         });
         return t.batch(queries);
     }).then(data => {
@@ -111,6 +126,7 @@ module.exports = {
   getAllStocks:  getAllStocks,
   getAllShops: getAllShops,
   getSingleMeal: getSingleMeal,
+  getProductListPrice: getProductListPrice,
   getAllProductsInStock:getAllProductsInStock,
   batchInsertMealProducts:batchInsertMealProducts,
   updateStocksAmount:updateStocksAmount,

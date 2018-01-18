@@ -123,7 +123,7 @@ $(document).ready(function(){
   });
 
   //Set default date to today
-  document.getElementById('date').valueAsDate = new Date(day,month,year);
+  $('#day').datepicker({dateFormat: 'dd-mm-yy'}).datepicker("setDate", new Date());
 
   function generateProdDescription(name,description,stock,amount){
     var description = name+" ("+description+")";
