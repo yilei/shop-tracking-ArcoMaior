@@ -62,6 +62,7 @@ $(document).ready(function(){
       e.preventDefault();
       var data = {};
       $("#form_meal.add").serializeArray().map(function(x){data[x.name] = x.value;});
+      data.day = $.datepicker.formatDate('mm-dd-yy', $('#day').datepicker('getDate'));
       delete data.meal_products_list;
       data.products = [];
       $('#meal_products_list').val().forEach(function(entry) {
@@ -85,8 +86,8 @@ $(document).ready(function(){
   $('#meal_products_list').multiSelect({ keepOrder: true ,
          afterSelect: function(values){
            var stock = list[values];
-           var quantity = parseInt(prompt("Em stock: "+stock.amount+"\nQuantidade:", "1"));
-           if (quantity > 0 || quantity < stock) {
+           var quantity = parseFloat(prompt("Em stock: "+stock.amount+"\nQuantidade:", "1"));
+           if (quantity > 0.00 || quantity < stock) {
              stock.toBeUsed = quantity;
 
              var desc = $('#meal_products_list').find("option[value='"+values+"']").text();

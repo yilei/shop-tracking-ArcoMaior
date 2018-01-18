@@ -58,9 +58,9 @@
         </table>
     </div>
 
-    <button class="final-btn" onclick="myFunction()">Adicionar novo produto</button>
+    <button class="final-btn" id="add">Adicionar novo produto</button>
 
-    <div class="lightbox_container" id="myDIV">
+    <div class="lightbox_container" id="addButton">
         <h2>Adicionar produto</h2>
         <form class="form add" id="form_product" data-id="" novalidate>
             <div class="row form-data">
@@ -84,16 +84,6 @@
             </div>
         </form>
     </div>
-
-    <script>
-        function myFunction() {
-            if ($("#myDiv").css("display") === "none") {
-              $("#myDiv").css({"display":"block"});
-            } else {
-              $("#myDiv").css({"display":"none"});
-            }
-        }
-    </script>
 
     <footer>
         <div class="row">

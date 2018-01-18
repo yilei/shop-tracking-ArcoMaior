@@ -73,7 +73,7 @@
       e.preventDefault();
       var data = {};
       $("#form_shop.add").serializeArray().map(function(x){data[x.name] = x.value;});
-      console.log(data)
+      data.day = $.datepicker.formatDate('mm-dd-yy', $('#day').datepicker('getDate'));
       $.ajax({
         url: window.origin+":3000/shops",
         type: "POST",

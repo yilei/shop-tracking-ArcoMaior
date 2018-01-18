@@ -6,7 +6,8 @@ var stocks = require("./Stock")
 exports.getAll = function(req, res, next) {
    return dal.getAllShops().then(list =>{
        list.map(x => {
-         x.day = new Date(x.day).toLocaleString('pt-PT',{year: 'numeric', month: 'numeric', day: 'numeric' })
+         x.day = new Date(x.day).toLocaleString('pt-PT',{year: 'numeric', month: 'numeric', day: 'numeric' });
+         x.price = x.price.toFixed(2) + " €";
        });
        return list;
    })
@@ -24,7 +25,7 @@ exports.create = function(req, res, next) {
      oldAmount = 0;
      oldPrice = 0;
      update = 0;
-     if(row){
+     if(row.length != 0){
        update = 1;
        if(row[0]["amount"] != 0){
         oldAmount = row[0]["amount"];

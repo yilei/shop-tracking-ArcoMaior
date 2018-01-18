@@ -164,7 +164,7 @@ input[type=submit]:active {
 
 /* ---- Adicionar produtos ------*/
 
-#myDIV {
+#addButton {
   display: none;
 }
 

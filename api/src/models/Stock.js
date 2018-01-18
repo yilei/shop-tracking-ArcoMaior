@@ -4,6 +4,12 @@ var dal = require("./DAL")
 // add query functions
 exports.getAll = function(req, res, next) {
    return dal.getAllStocks("stocks")
+    .then(list =>{
+       list.map(x => {
+         x.price = x.price.toFixed(2) + " €";
+       });
+       return list;
+   })
 }
 
 exports.getSingle = function(req, res, next) {

@@ -27,7 +27,7 @@ function deletes(id , type) {
 
 function getAllMeals() {
   // Get all meals with their products name, having or not products
-  var query_string = "SELECT meals.*, string_agg(products.name, ', ') as products \
+  var query_string = "SELECT meals.*, string_agg(products.name || '('|| meal_products.amount::text || ')', ', ') as products \
                           FROM meals \
                           LEFT OUTER JOIN meal_products ON meals.id=meal_products.meal_id \
                           LEFT OUTER JOIN products ON products.id=meal_products.product_id \
@@ -65,7 +65,7 @@ function getStockByProdId(id) {
 }
 
 function getAllProductsInStock() {
-    var query_string = "SELECT stocks.id as id, name, description,amount \
+    var query_string = "SELECT stocks.product_id as id, name, description,amount \
                           FROM products \
                           JOIN stocks ON products.id=stocks.product_id \
                           WHERE amount!=0;"
@@ -96,6 +96,7 @@ function batchInsertMealProducts(id ,products){
       price: parseFloat(x.price)
     })
   });
+  console.log(products_to_insert);
   const query = db.$config.pgp.helpers.insert(products_to_insert,['meal_id' , 'product_id', 'amount', 'price'], 'meal_products');
   return db.query(query)
 }

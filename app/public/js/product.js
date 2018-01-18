@@ -73,12 +73,12 @@ $(document).ready(function(){
     });
   });
 
-  function myFunction() {
-      if (x.style.display === "none") {
-        $("#myDiv").css({"display":"block"});
+  $(document).on('click', '#add', function(e){
+      if ($("#addButton").css("display") === "none") {
+        $("#addButton").css({"display":"block"});
       } else {
-        $("#myDiv").css({"display":"none"});
+        $("#addButton").css({"display":"none"});
       }
-  }
+  })
 
 });
