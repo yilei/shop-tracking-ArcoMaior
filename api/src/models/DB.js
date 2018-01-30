@@ -3,7 +3,10 @@ var promise = require('bluebird');
 var options = {
   // Initialization Options
   capSQL: true,
-  promiseLib: promise
+  promiseLib: promise,
+  query: e => {
+      console.log("QUERY:" + e.query);
+  }
 };
 
 var pgp = require('pg-promise')(options);

@@ -28,12 +28,6 @@ $(document).ready(function(){
     },
   });
 
-  /* Edit
-  $('#table_products tbody').on('click', '.function_edit', function () {
-        var data = table_products.row( $(this).closest('tr') ).data();
-        alert( data.name +"'s salary is: "+ data.id );
-  } );
-*/
 
   //Delete
   $('#table_products tbody').on('click', '.function_delete', function () {
