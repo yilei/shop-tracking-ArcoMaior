@@ -166,6 +166,8 @@ input[type=submit]:active {
 
 /* ---- Adicionar produtos ------*/
 
+/* Button */
+
 #addButton {
   display: none;
 }
@@ -185,12 +187,9 @@ input[type=submit]:active {
     margin-bottom: 20px;
 }
 
-
-.lightbox_container {
+.form-add {
     width: 40%;
     margin: auto;
-    margin-top: 25px;
-    margin-bottom: 50px;
     border-top: 2px solid #18515E;
 }
 
@@ -201,15 +200,19 @@ h2 {
     padding: 5px;
 }
 
+/* Form */
+
 .form-data {
     padding: 2px;
-    margin-left: 5px;
-    margin-right: 5px;
     font-size: 90%;
 }
 
+input[type=text] {
+    width: 100%;
+}
+
 input[type=submit] {
-    float: right;
+    width: 40%;
 }
 
 /* ---- Footer --------*/

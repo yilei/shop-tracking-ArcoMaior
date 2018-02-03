@@ -52,7 +52,7 @@
                     <th>Dia</th>
                     <th>Descrição</th>
                     <th>Produto</th>
-                    <th>Preço por unidade</th>
+                    <th>Preço unitário</th>
                     <th>Quantidade</th>
                     <th>Opções</th>
                 </tr>
@@ -63,10 +63,10 @@
     </div>
 
     <button class="final-btn" id="add">Adicionar nova compra</button>
-
-    <div class="lightbox_container">
+    
+    <div class="lightbox_container" id="addButton">
         <h2>Adicionar compra de produto</h2>
-        <form class="form add" id="form_shop" data-id="">
+        <form class="form add" id="form_shop" autocomplete="on">
             <div class="row form-data">
                 <div class="col span-1-of-2">
                     <label for="name">Dia: <span class="required">*</span></label>
