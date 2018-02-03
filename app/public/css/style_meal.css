@@ -153,7 +153,26 @@ input[type=submit]:active {
     border: 1px solid #236d7e;
 }
 
-/* ---- Adicionar produtos ------*/
+/* ---- Adicionar refeições ------*/
+
+#addButton {
+  display: none;
+}
+
+.final-btn {
+    background-color: #18515E;
+    color: #f7f2e0;
+    border: 1px solid #18515E;
+    border-radius: 5px;
+    padding: 3px 7px;
+    font-size: 100%;
+    cursor: pointer;
+    width: 20%;
+    margin-left: 40%;
+    margin-right: 40%;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
 
 #ui-datepicker-div {display: none;}
 

@@ -74,13 +74,15 @@ h1:after {
 /* Show results */
 .dataTables_length {
     font-size: 90%;
-    margin-left: 150px;
+    width: 60%;
+    margin: auto;
 }
 
 /* Search */
 .dataTables_filter {
     font-size: 90%;
-    margin-left: 150px;
+    width: 60%;
+    margin: auto;
     margin-top: 10px;
 }
 
@@ -152,6 +154,25 @@ input[type=submit]:active {
 }
 
 /* ---- Adicionar produtos ------*/
+
+#addButton {
+  display: none;
+}
+
+.final-btn {
+    background-color: #18515E;
+    color: #f7f2e0;
+    border: 1px solid #18515E;
+    border-radius: 5px;
+    padding: 3px 7px;
+    font-size: 100%;
+    cursor: pointer;
+    width: 20%;
+    margin-left: 40%;
+    margin-right: 40%;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
 
 .lightbox_container {
     width: 40%;
