@@ -40,7 +40,7 @@ $(document).ready(function(){
             alert("O produto em armazem: "+id+" foi apagado com sucesso");
           },
           error: function (xhr, ajaxOptions, thrownError) {
-            alert("Ocorreu um erro");
+            alert("Ocorreu um erro, porfavor tente outra vez");
           }
         });
     });
@@ -58,7 +58,7 @@ $(document).ready(function(){
             alert("O produto em armazem: "+id+" foi apagado com sucesso");
           },
           error: function (xhr, ajaxOptions, thrownError) {
-            alert("Ocorreu um erro");
+            alert("Ocorreu um erro, porfavor tente outra vez");
           }
         });
     });
@@ -78,7 +78,7 @@ $(document).ready(function(){
             alert("Produto adicionado com sucesso")
         },
         error: function(jqXHR, textStatus, errorThrown) {
-          alert("Ocorreu um erro");
+          alert("Ocorreu um erro, porfavor tente outra vez");
         }
     });
   });
@@ -93,7 +93,7 @@ $(document).ready(function(){
       });
     },
     error: function(jqXHR, textStatus, errorThrown) {
-      alert("Ocorreu um erro");
+      alert("Ocorreu um erro, porfavor tente outra vez");
     }
   });
 

@@ -45,7 +45,7 @@
             alert("Produto adicionado com sucesso")
         },
         error: function(jqXHR, textStatus, errorThrown) {
-          alert("Ocorreu um erro");
+          alert("Ocorreu um erro, porfavor tente outra vez");
         }
     });
   });
@@ -63,7 +63,7 @@
             alert("A compras: "+id+" foi apagado com sucesso");
           },
           error: function (xhr, ajaxOptions, thrownError) {
-            alert("Ocorreu um erro");
+            alert("Ocorreu um erro, porfavor tente outra vez");
           }
         });
     });
@@ -83,7 +83,7 @@
             location.reload();
         },
         error: function(jqXHR, textStatus, errorThrown) {
-          alert("Ocorreu um erro");
+          alert("Ocorreu um erro, porfavor tente outra vez");
         }
     });
   });
@@ -108,7 +108,7 @@
                $('#product').append(listitems);
            },
            error: function () {
-               alert("Ocorreu um erro");
+               alert("Ocorreu um erro, porfavor tente outra vez");
            }
   });
 
