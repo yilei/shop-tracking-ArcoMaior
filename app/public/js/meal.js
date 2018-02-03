@@ -125,7 +125,6 @@ $(document).ready(function(){
 
   //Set default date to today
   $('#day').datepicker({
-   showOn: 'button',
    buttonImage: 'images/calendar.png',
    buttonImageOnly: true,
    dateFormat: 'dd/mm/yy',
