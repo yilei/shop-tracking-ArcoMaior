@@ -171,7 +171,7 @@ input[type=submit]:active {
     margin-left: 40%;
     margin-right: 40%;
     margin-top: 15px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 #ui-datepicker-div {display: none;}
