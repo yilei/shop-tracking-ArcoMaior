@@ -52,7 +52,7 @@ $(document).ready(function(){
             alert("O utilizador: "+id+" foi apagado com sucesso");
           },
           error: function (xhr, ajaxOptions, thrownError) {
-            alert("Ocorreu um erro");
+            alert("Ocorreu um erro, porfavor tente outra vez");
           }
         });
     });
@@ -78,7 +78,7 @@ $(document).ready(function(){
             location.reload();
         },
         error: function(jqXHR, textStatus, errorThrown) {
-          alert("Ocorreu um erro");
+          alert("Ocorreu um erro, porfavor tente outra vez");
         }
     });
   });
@@ -119,7 +119,7 @@ $(document).ready(function(){
                $('#meal_products_list').multiSelect('refresh');
            },
            error: function () {
-               alert("Ocorreu um erro");
+               alert("Ocorreu um erro, porfavor tente outra vez");
            }
   });
 
@@ -141,5 +141,13 @@ $(document).ready(function(){
     var description = name+" ("+description+")";
     if(stock && amount) description += " ("+stock+"/"+amount+")";
     return description;
-  }
+  };
+
+  $(document).on('click', '#add', function(e){
+      if ($("#addButton").css("display") === "none") {
+        $("#addButton").css({"display":"block"});
+      } else {
+        $("#addButton").css({"display":"none"});
+      }
+  });
 });

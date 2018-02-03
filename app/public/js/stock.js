@@ -101,5 +101,13 @@ $(document).ready(function(){
     var description = name+" ("+description+")";
     if(stock && amount) description += " ("+stock+"/"+amount+")";
     return description;
-  }
+  };
+
+  $(document).on('click', '#add', function(e){
+      if ($("#addButton").css("display") === "none") {
+        $("#addButton").css({"display":"block"});
+      } else {
+        $("#addButton").css({"display":"none"});
+      }
+  });
 });
