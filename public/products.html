@@ -61,26 +61,33 @@
     <button class="final-btn" id="add">Adicionar novo produto</button>
 
     <div class="lightbox_container" id="addButton">
-        <h2>Adicionar produto</h2>
-        <form class="form add" id="form_product" data-id="" novalidate>
+         <div class="row">
+                <h2>Adicionar produto</h2>
+            </div>
+        <form class="form add" id="form_product" autocomplete="on">
             <div class="row form-data">
-                <div class="col span-1-of-2">
-                    <label for="name">Nome: <span class="required">*</span></label>
+                <div class="col span-1-of-3">
+                    <label for="name">Nome</label>
                 </div>
-                <div class="col span-1-of-2">
-                    <input type="text" step="1" min="0" class="text" name="name" id="name" value="" required>
+                <div class="col span-2-of-3">
+                    <input type="text" step="1" min="0" class="text" name="name" id="name" required>
                 </div>
             </div>
             <div class="row form-data">
-                <div class="col span-1-of-2">
-                    <label for="description">Descrição: <span class="required">*</span></label>
+                <div class="col span-1-of-3">
+                    <label for="description">Descrição</label>
                 </div>
-                <div class="col span-1-of-2">
-                    <input type="text" class="text" name="description" id="description" value="" required>
+                <div class="col span-2-of-3">
+                    <input type="text" class="text" name="description" id="description" required>
                 </div>
             </div>
-            <div class="button_container">
-                <input type="submit" value="Adicionar">
+            <div class="row form-data">
+                <div class="col span-1-of-3">
+                    <label>&nbsp;</label>
+                </div>
+                <div class="col span-2-of-3">
+                    <input type="submit" value="Adicionar">
+                </div>
             </div>
         </form>
     </div>
