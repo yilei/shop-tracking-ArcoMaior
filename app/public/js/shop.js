@@ -134,10 +134,18 @@
   };
 
   $(document).on('click', '#add', function(e){
-      if ($("#addButton").css("display") === "none") {
-        $("#addButton").css({"display":"block"});
+      if ($("#form_shop").css("display") === "none") {
+        $("#form_shop").css({"display":"block"});
       } else {
-        $("#addButton").css({"display":"none"});
+        $("#form_shop").css({"display":"none"});
+      }
+  });
+
+  $(document).on('click', '#add_product', function(e){
+      if ($("#form_shop_product").css("display") === "none") {
+        $("#form_shop_product").css({"display":"block"});
+      } else {
+        $("#form_shop_product").css({"display":"none"});
       }
   });
 });

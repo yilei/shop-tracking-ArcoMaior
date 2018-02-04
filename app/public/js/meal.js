@@ -144,10 +144,10 @@ $(document).ready(function(){
   };
 
   $(document).on('click', '#add', function(e){
-      if ($("#addButton").css("display") === "none") {
-        $("#addButton").css({"display":"block"});
+      if ($("#form_meal").css("display") === "none") {
+        $("#form_meal").css({"display":"block"});
       } else {
-        $("#addButton").css({"display":"none"});
+        $("#form_meal").css({"display":"none"});
       }
   });
 });

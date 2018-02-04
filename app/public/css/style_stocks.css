@@ -35,7 +35,7 @@ body {
     margin-right: 20px;
 }
 
-.main-nav li a:link, 
+.main-nav li a:link,
 .main-nav li a:visited {
     font-size: 80%;
     text-decoration: none;
@@ -43,7 +43,7 @@ body {
     cursor: pointer;
 }
 
-.main-nav li a:hover, 
+.main-nav li a:hover,
 .main-nav li a:active {
     color: #18515E;
     transition: color 0.2s;
@@ -55,7 +55,7 @@ h1 {
     word-spacing: 2px;
     text-align: center;
     letter-spacing: 1px;
-    margin-top: 10px;  
+    margin-top: 10px;
     text-transform: uppercase;
 }
 
@@ -96,7 +96,7 @@ input[type="search"] {
     margin: auto;
     margin-top: 10px;
 }
-        
+
 th {
     text-transform: uppercase;
     font-size: 100%;
@@ -136,12 +136,12 @@ tr:hover {background-color: rgba(24, 81, 94, 0.28);}
 input[type=submit]{
     background-color: #18515E;
     color: #f7f2e0;
-    border: 1px solid #18515E; 
+    border: 1px solid #18515E;
     border-radius: 5px;
     padding: 3px 7px;
     font-size: 90%;
     cursor: pointer;
-} 
+}
 
 .paginate_button:hover,
 .paginate_button:active,
@@ -158,9 +158,9 @@ input[type=submit]:active {
 
 /* ---- Adicionar produtos ------*/
 
-/* #addButton {
+#add {
   display: none;
-} */
+}
 
 .final-btn {
     background-color: #18515E;
@@ -243,4 +243,3 @@ footer p {
 .ion-android-home:hover {
     color:#f04c4c;
 }
-

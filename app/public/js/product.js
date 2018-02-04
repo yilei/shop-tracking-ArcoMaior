@@ -68,10 +68,10 @@ $(document).ready(function(){
   });
 
   $(document).on('click', '#add', function(e){
-      if ($("#addButton").css("display") === "none") {
-        $("#addButton").css({"display":"block"});
+      if ($("#form_product").css("display") === "none") {
+        $("#form_product").css({"display":"block"});
       } else {
-        $("#addButton").css({"display":"none"});
+        $("#form_product").css({"display":"none"});
       }
   })
 

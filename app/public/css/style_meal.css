@@ -158,10 +158,9 @@ input[type=submit]:active {
 
 /* ---- Adicionar refeições ------*/
 
-/*
-#addButton {
+#add {
   display: none;
-} */
+}
 
 .final-btn {
     background-color: #18515E;
@@ -188,7 +187,7 @@ input[type=submit]:active {
     padding: 5px;
 }
 
-.ui-datepicker-prev, 
+.ui-datepicker-prev,
 .ui-datepicker-next {
     background-color: #18515E;
     color: #f7f2e0;
@@ -227,7 +226,7 @@ label {font-size: 90%;}
 
 .text {width: 100%;}
 
-input[type=number], 
+input[type=number],
 .day_date {
     width: 50%;
     cursor: pointer;

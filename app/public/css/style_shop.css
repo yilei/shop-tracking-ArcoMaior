@@ -153,9 +153,13 @@ input[type=submit]:active {
 
 /* ---- Adicionar compras botão ------*/
 
-/* #addButton {
+#add {
   display: none;
-} */
+}
+#add_product {
+  display: none;
+}
+
 
 .final-btn {
     background-color: #18515E;
@@ -189,7 +193,7 @@ input[type=submit]:active {
     padding: 5px;
 }
 
-.ui-datepicker-prev, 
+.ui-datepicker-prev,
 .ui-datepicker-next {
     background-color: #18515E;
     color: #f7f2e0;
@@ -214,7 +218,7 @@ input[type=submit]:active {
     width: 40%;
     margin: 15px auto;
     border-top: 2px solid #18515E;
-    
+
 }
 h2 {
     text-transform: uppercase;
