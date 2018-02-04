@@ -153,10 +153,10 @@ input[type=submit]:active {
 
 /* ---- Adicionar compras botão ------*/
 
-#add {
+#form_shop {
   display: none;
 }
-#add_product {
+#form_shop_product {
   display: none;
 }
 

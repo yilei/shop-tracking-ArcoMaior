@@ -158,7 +158,7 @@ input[type=submit]:active {
 
 /* ---- Adicionar refeições ------*/
 
-#add {
+#form_meal {
   display: none;
 }
 
