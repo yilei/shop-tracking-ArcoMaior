@@ -74,7 +74,6 @@ h1:after {
 /* Show results */
 
 .dataTables_length {
-    font-size: 90%;
     width: 60%;
     margin: auto;
 }
@@ -82,7 +81,6 @@ h1:after {
 /* Search */
 
 .dataTables_filter {
-    font-size: 90%;
     width: 60%;
     margin: auto;
     margin-top: 10px;
@@ -164,6 +162,11 @@ input[type=submit]:active {
     border: 1px solid #236d7e;
 }
 
+.function_delete {
+    border-radius: 5px;
+    padding: 3px;
+}
+
 /* ---- Adicionar produtos ------*/
 
 /* Button */
@@ -189,7 +192,7 @@ input[type=submit]:active {
 
 .form-add {
     width: 40%;
-    margin: auto;
+    margin: 5px auto;
     border-top: 2px solid #18515E;
 }
 
@@ -197,22 +200,22 @@ h2 {
     text-transform: uppercase;
     font-size: 105%;
     font-weight: 500;
-    padding: 5px;
+    margin: 2px 0;
 }
 
 /* Form */
 
-.form-data {
-    padding: 2px;
-    font-size: 90%;
-}
+label {font-size: 90%;}
 
 input[type=text] {
     width: 100%;
+    font-size: 90%;
 }
 
 input[type=submit] {
     width: 40%;
+    font-size: 97%;
+    float: right;
 }
 
 /* ---- Footer --------*/

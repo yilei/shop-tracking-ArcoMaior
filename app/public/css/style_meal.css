@@ -73,14 +73,12 @@ h1:after {
 
 /* Show results */
 .dataTables_length {
-    font-size: 90%;
     width: 90%;
     margin: auto;
 }
 
 /* Search */
 .dataTables_filter {
-    font-size: 90%;
     width: 90%;
     margin: auto;
     margin-top: 10px;
@@ -153,11 +151,17 @@ input[type=submit]:active {
     border: 1px solid #236d7e;
 }
 
+.function_delete {
+    border-radius: 5px;
+    padding: 3px;
+}
+
 /* ---- Adicionar refeições ------*/
 
+/*
 #addButton {
   display: none;
-}
+} */
 
 .final-btn {
     background-color: #18515E;
@@ -174,13 +178,39 @@ input[type=submit]:active {
     margin-bottom: 20px;
 }
 
-#ui-datepicker-div {display: none;}
+/* tabela data */
 
-.lightbox_container {
+#ui-datepicker-div {
+    display: none;
+    background-color: #fbfbfb;
+    border-radius: 5px;
+    border: 2px solid #18515E;
+    padding: 5px;
+}
+
+.ui-datepicker-prev, 
+.ui-datepicker-next {
+    background-color: #18515E;
+    color: #f7f2e0;
+    border: 1px solid #18515E;
+    border-radius: 5px;
+    padding: 3px 7px;
+    font-size: 90%;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.ui-datepicker-title {
+    padding: 5px 2px;
+}
+
+.ui-state-default {
+    color: #434343;
+    text-decoration: none;
+}
+.form-add {
     width: 40%;
-    margin: auto;
-    margin-top: 25px;
-    margin-bottom: 50px;
+    margin: 5px auto;
     border-top: 2px solid #18515E;
 }
 
@@ -188,23 +218,19 @@ h2 {
     text-transform: uppercase;
     font-size: 105%;
     font-weight: 500;
-    padding: 5px;
+    margin: 2px 0;
 }
 
-.form-data {
-    padding: 2px;
-    margin-left: 5px;
-    margin-right: 5px;
-    font-size: 90%;
-}
+/* Form */
 
-.text-number {
-    width: 45px;
-}
+label {font-size: 90%;}
 
+.text {width: 100%;}
 
-input[type=submit] {
-    margin-left: 8px;
+input[type=number], 
+.day_date {
+    width: 50%;
+    cursor: pointer;
 }
 
 /* ---- Footer --------*/

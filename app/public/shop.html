@@ -63,80 +63,91 @@
     </div>
 
     <button class="final-btn" id="add">Adicionar nova compra</button>
-    
-    <div class="lightbox_container" id="addButton">
-        <h2>Adicionar compra de produto</h2>
-        <form class="form add" id="form_shop" autocomplete="on">
-            <div class="row form-data">
-                <div class="col span-1-of-2">
-                    <label for="name">Dia: <span class="required">*</span></label>
+
+    <form class="form-add" id="form_shop" autocomplete="on">
+        <div class="row">
+            <h2>Adicionar compra de produto</h2>
+        </div>
+        <div class="row">
+            <div class="col span-1-of-3">
+                <label for="name">Dia</label>
+            </div>
+            <div class="col span-2-of-3">
+                <input type="text" class="day_date" name="day" id="day" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col span-1-of-3">
+                <label for="description">Descrição</label>
+            </div>
+            <div class="col span-2-of-3">
+                <input type="text" class="text" name="description" id="description" value="" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col span-1-of-3">
+                <label for="type">Produto</label>
+            </div>
+            <div class="col span-1-of-3">
+                <select class="select_product" name="product_id" id="product"></select>
+            </div>
+            <div class="col span-1-of-3">
+                <button class="plus-btn" id="add_product"><i class="ion-plus-round"></i></button>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col span-1-of-4">
+                    <label for="amount">Quantidade</label>
                 </div>
-                <div class="col span 1-of-2">
-                  <input type="text" class="text" name="day" id="day" required>
+                <div class="col span-1-of-4">
+                    <input type="number" min="0" step="0.1" class="text" name="amount" id="description" required>
+                </div>
+                <div class="col span-1-of-4">
+                    <label for="price">Preço unitário</label>
+                </div>
+                <div class="col span-1-of-4">
+                    <input type="number" min="0" step="0.1" class="text" name="price" id="type" value="" required>
                 </div>
             </div>
-            <div class="row form-data">
-                <div class="col span-1-of-2">
-                    <label for="description">Descrição: <span class="required">*</span></label>
-                </div>
-                <div class="col span-1-of-2">
-                    <input type="text" class="text" name="description" id="description" value="" required>
-                </div>
+        <div class="row">
+            <div class="col span-1-of-3">
+                <label>&nbsp;</label>
             </div>
-            <div class="row form-data">
-                <div class="col span-1-of-2">
-                    <label for="type">Produto: <span class="required">*</span></label>
-                </div>
-                <div class="col span-1-of-2">
-                  <select name="product_id" id="product"></select>
-                </div>
-            </div>
-            <div class="row form-data">
-                <div class="col span-1-of-2">
-                    <label for="type">Preço por unidade: <span class="required">*</span></label>
-                </div>
-                <div class="col span ">
-                  <input type="number" step="any" name="price" id="price" value="" required>
-                </div>
-            </div>
-            <div class="row form-data">
-                <div class="col span-1-of-2">
-                    <label for="type">Quantidade: <span class="required">*</span></label>
-                </div>
-                <div class="col span-1-of-2">
-                  <input type="number"  step="any" name="amount" id="amount" value="" required>
-                </div>
-            </div>
-            <div class="button_container">
+            <div>
                 <input type="submit" value="Adicionar Compra">
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 
-    <div class="lightbox_container">
-        <h2>Adicionar produto</h2>
-        <form class="form add" id="form_product" data-id="" novalidate>
-            <div class="row form-data">
-                <div class="col span-1-of-2">
-                    <label for="name">Nome: <span class="required">*</span></label>
-                </div>
-                <div class="col span-1-of-2">
-                    <input type="text" step="1" min="0" class="text" name="name" id="name" value="" required>
-                </div>
+    <form class="form-add" autocomplete="on" id="form_shop_product">
+        <div class="row">
+            <h2>Adicionar produto</h2>
+        </div>
+        <div class="row form-data">
+            <div class="col span-1-of-3">
+                <label for="name">Nome</label>
             </div>
-            <div class="row form-data">
-                <div class="col span-1-of-2">
-                    <label for="description">Descrição: <span class="required">*</span></label>
-                </div>
-                <div class="col span-1-of-2">
-                    <input type="text" class="text" name="description" id="description" value="" required>
-                </div>
+            <div class="col span-2-of-3">
+                <input type="text" step="1" min="0" class="text" name="name" id="name" placeholder="Bacalhau" required>
             </div>
-            <div class="button_container">
+        </div>
+        <div class="row form-data">
+            <div class="col span-1-of-3">
+                <label for="description">Descrição</label>
+            </div>
+            <div class="col span-2-of-3">
+                <input type="text" class="text" name="description" id="description" placeholder="Pingo Doce" required>
+            </div>
+        </div>
+        <div class="row form-data">
+            <div class="col span-1-of-3">
+                <label>&nbsp;</label>
+            </div>
+            <div class="col span-2-of-3">
                 <input type="submit" value="Adicionar">
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
     <footer>
         <div class="row">
             <div class="col span-1-of-2">
